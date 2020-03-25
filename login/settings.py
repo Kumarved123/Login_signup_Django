@@ -77,11 +77,8 @@ WSGI_APPLICATION = 'login.wsgi.application'
 DATABASES = {
         'default': {
         'ENGINE': 'djongo',
-        'NAME': 'user_registration',
-        'HOST': 'mongodb+srv://vedanand1:vedpass@cluster0-ivig2.mongodb.net/test?retryWrites=true&w=majority',
-        'USER': 'vedanand1',
-        'PASSWORD': 'vedpass',
-        'authMechanism': 'SCRAM-SHA-1'
+        'NAME': 'signup',
+        
     }
 }
 
