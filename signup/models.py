@@ -4,7 +4,7 @@ from datetime import datetime, timedelta
 # Create your models here.
 class Details(models.Model):
    ip_address = models.CharField(max_length = 50,  primary_key=True)
-    = models.DateTimeField(default=datetime.now()+timedelta(days=1))
+   time_out = models.DateTimeField(default=datetime.now()+timedelta(days=1))
    time_in = models.DateTimeField(auto_now=True)
    attemps = models.IntegerField()
 
