@@ -1,25 +1,52 @@
-from django.contrib.auth import login, authenticate
 from django.contrib.auth.models import User, auth
-from django.shortcuts import render, redirect
 from django.http import HttpResponse
+from django.shortcuts import render, redirect
+from signup.forms import RegistrationForm
+from django.contrib import messages
+from django.conf import settings
+from django.contrib.sessions.models import Session
+
+import json
+import urllib
 
 # Create your views here.
-def index(request):
-    if request.method == 'POST':
-        d = dict(request.POST)
-        if d['button'] == "login":
-            username = d['username']
-            password = d['password']
-            return HttpResponse("You are logedin")
-        if d['button'] == "signup":
-            email = d['email']
-            username = d['username']
-            password = d['password']
-            return HttpResponse("You are registered now")
-    else:
-        return render(request, 'index.html')
-def signup(request):
-    return HttpResponse("You are registered now")
+def register(request):
+    if request.method =='POST':
+        form = RegistrationForm(request.POST)
+        if form.is_valid():
+            recaptcha_response = request.POST.get('g-recaptcha-response')
+            url = 'https://www.google.com/recaptcha/api/siteverify'
+            values = {
+                'secret': settings.GOOGLE_RECAPTCHA_SECRET_KEY,
+                'response': recaptcha_response
+            }
+            data = urllib.parse.urlencode(values).encode()
+            req =  urllib.request.Request(url, data=data)
+            response = urllib.request.urlopen(req)
+            result = json.loads(response.read().decode())
+            if result['success']:
+                form.save()
+                messages.success(request, 'New comment added with success!')
+            else:
+                messages.error(request, 'Invalid reCAPTCHA. Please try again.')
+            return redirect('index')
+            
+        else:
+            messages.error(request,'Invalid Credentials, Try Again !!!!')
+            return redirect('index')
 
-def signin(request):
-    return HttpResponse("You are logedin")
+    else:
+        form = RegistrationForm()
+
+        args = {'form': form }
+        return render(request, 'index.html', args)
+def profile(request, pk=None):
+    if not request.user.is_authenticated:
+        return redirect('login')
+    if pk:
+        user = User.objects.get(pk=pk)
+    else:
+        user = request.user
+    args = {'user': user}
+    return render(request, 'profile.html', args)
+

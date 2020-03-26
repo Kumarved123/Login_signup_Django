@@ -20,7 +20,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '2()+et+lk=!5#rw16e=3!(mr$d#%a5wiuk)+(x7ui#0_rqt&()'
+SECRET_KEY = '2()+et+lk=!5#rw16e=3!(mr$d#%a5wiuk)+(x7ui#0_rqt&()',
+GOOGLE_RECAPTCHA_SECRET_KEY = '6LfqIOQUAAAAADd3wXNDBJmcfPUfK3EamcQp43nV'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -32,6 +33,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     "signup",
+    'hitcount',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
