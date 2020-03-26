@@ -70,10 +70,10 @@ def register(request):
                 response = urllib.request.urlopen(req)
                 result = json.loads(response.read().decode())
             else:
-                result['success'] = True
+                result = {'success':True}
             if result['success']:
                 form.save()
-                messages.success(request, 'New comment added with success!')
+                messages.success(request, 'New Acount created with success!')
             else:
                 messages.error(request, 'Invalid reCAPTCHA. Please try again.')
             return redirect('index')
