@@ -59,7 +59,7 @@ python manage.py migrate
 
 * start the local server
 ```
-python mnage.py runserver
+python manage.py runserver
 ```
 Go to the local server and it will work
 
