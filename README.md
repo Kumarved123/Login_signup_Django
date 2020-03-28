@@ -1,88 +1,66 @@
 # Login and signup with google recaptcha
 
-One Paragraph of project description goes here
+The project demonstrate the more secure symtem for user registration on web application.
+
+If someone from the same IP address attempts to register more than 3 times in a day,
+they should be presented with a captcha (Google Recaptcha). The captcha should be
+validated for all subsequent attempts to register for that IP address.
+
+Database used to store the data is MongoDB
 
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
-### Prerequisites
-
-What things you need to install the software and how to install them
-
+* Insatll a MongoDB on your system
+* Install Python on your system
+* Install Django on your system
 ```
-Give examples
+pip install django
 ```
-
-### Installing
+* Install Djongo on your system
+```
+pip install djongo
+```
+## Installing
 
 A step by step series of examples that tell you how to get a development env running
 
 Say what the step will be
+* make changes in the settings.py file to localize the databse
 
-```
-Give the example
-```
+```python
+# Database
+# https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-And repeat
-
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
-
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
+DATABASES = {
+        'default': {
+        'ENGINE': 'djongo', 
+        'NAME': 'signup', # Change the name of the databes which you have created in mongo db compass
+        
+    }
+}
 ```
 
-### And coding style tests
-
-Explain what these tests test and why
-
+* To make a superuser run the commnd in the directory where manage.py file is there
 ```
-Give an example
+python3 manage.py createsuperuser
 ```
+* To save all changes to the database run two more commands
+```
+python3 manage.py makemigrations
+```
+```
+python3 manage.py migrate
+```
+* See the tables in the MongoDb in your datbase
 
-## Deployment
+## Start using
 
-Add additional notes about how to deploy this on a live system
+* start the local server
+```
+python mnage.py runserver
+```
+Go to the local server and it will work
 
-## Built With
-
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
-
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
-
-## Authors
-
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
-## Acknowledgments
-
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
 
