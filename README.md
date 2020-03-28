@@ -44,14 +44,14 @@ DATABASES = {
 
 * To make a superuser run the commnd in the directory where manage.py file is there
 ```
-python3 manage.py createsuperuser
+python manage.py createsuperuser
 ```
 * To save all changes to the database run two more commands
 ```
-python3 manage.py makemigrations
+python manage.py makemigrations
 ```
 ```
-python3 manage.py migrate
+python manage.py migrate
 ```
 * See the tables in the MongoDb in your datbase
 
