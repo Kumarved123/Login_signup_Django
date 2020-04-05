@@ -6,7 +6,6 @@ from django.contrib import messages
 from django.conf import settings
 from . models import Details
 from datetime import datetime, timedelta
-
 import json
 import urllib
 
