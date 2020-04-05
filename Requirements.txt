@@ -2,7 +2,7 @@ Python 3.8.1
 Django 2.2.11
 Mongodb database name
 install djongo 
-to install django 
+to install djongo 
 run 
-$ pip install djanogo
+$ pip install djongo
 Notes: djongo is different then django.
