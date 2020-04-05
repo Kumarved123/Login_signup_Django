@@ -73,7 +73,7 @@ def register(request):
                 result = {'success':True}
             if result['success']:
                 form.save()
-                messages.success(request, 'New Acount created with success!')
+                messages.success(request, 'New Account created with success!')
             else:
                 messages.error(request, 'Invalid reCAPTCHA. Please try again.')
             return redirect('index')
