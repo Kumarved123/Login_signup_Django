@@ -46,6 +46,8 @@ DATABASES = {
 ```
 python manage.py createsuperuser
 ```
+* Enter username email, and password.
+* To view the database you can login as you superuser.
 * To save all changes to the database run two more commands
 ```
 python manage.py makemigrations
